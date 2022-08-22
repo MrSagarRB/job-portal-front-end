@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.test {
+  border: 1px solid red;
+}
+.banner-container {
+  background-image: url("../public/assets/banner.png");
+  height: 850px;
+}
+
+* {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+*::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+.icon-green {
+  color: #338573;
+  margin-right: 5px;
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+@layer base {
+  .custom-px {
+    @apply px-[40px];
+  }
+  .custom-btn {
+    @apply bg-[#338573] text-[#fff] h-[40px] px-5 rounded-[5px] transition duration-300 opacity-95 hover:opacity-100;
+  }
+}
