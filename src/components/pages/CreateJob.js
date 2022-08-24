@@ -1,14 +1,18 @@
+import Axios from "axios";
 import React, { useState } from "react";
 
 const CreateJob = () => {
   let [newJob, setNewJob] = useState();
+  let base = "http://localhost:3001/";
 
   let handelInputChange = (e) => {
     setNewJob({ ...newJob, [e.target.name]: e.target.value });
   };
 
   let handelPostjob = () => {
-    console.log(newJob);
+    Axios.post(`${base}createJob`, newJob).then((result) => {
+      console.log(result);
+    });
   };
 
   return (
@@ -34,6 +38,7 @@ const CreateJob = () => {
                   placeholder="Name"
                   className="custom-input"
                   name="companyName"
+                  required
                   onChange={(e) => {
                     handelInputChange(e);
                   }}
@@ -232,8 +237,8 @@ const CreateJob = () => {
                 <div className="flex w-full  justify-end">
                   <button
                     className="custom-btn"
-                    onClick={() => {
-                      handelPostjob();
+                    onClick={(e) => {
+                      handelPostjob(e);
                     }}
                   >
                     Post Job

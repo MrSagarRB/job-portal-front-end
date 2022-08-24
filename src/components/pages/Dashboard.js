@@ -224,7 +224,7 @@ const Dashboard = () => {
         <div className=" w-full h-[10%] flex items-center justify-center ">
           <p className="text-[30px] font-[600]">Popular Categories </p>{" "}
         </div>
-        <div className=" h-[70%] w-full grid grid-cols-5 place-items-center">
+        <div className=" h-[70%] w-full grid grid-cols-2 md:grid-cols-5 place-items-center">
           {categoryData?.map((item) => {
             return (
               <>

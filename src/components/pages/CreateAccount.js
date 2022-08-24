@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Axios from "axios";
 
 const CreateAccount = () => {
+  let [user, setUser] = useState();
+  let [statusMsg, setStatusMsg] = useState();
+  let base = "http://localhost:3001/";
+
+  let handelInputChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
+  let createUser = () => {
+    Axios.post(`${base}createNewUser`, user).then((result) => {
+      setStatusMsg(result.data);
+    });
+  };
+
+  console.log(statusMsg);
+
   return (
     <div className="h-screen">
       <div className="h-[80px] bg-[#F4F5F7] w-full mt-[60px] text-[25px] font-[600] flex items-center justify-center ">
@@ -23,6 +40,9 @@ const CreateAccount = () => {
                   className="custom-input"
                   placeholder="username"
                   name="userName"
+                  onChange={(e) => {
+                    handelInputChange(e);
+                  }}
                 />
               </td>
             </tr>
@@ -39,12 +59,27 @@ const CreateAccount = () => {
                   className="custom-input"
                   placeholder="Password"
                   name="password"
+                  onChange={(e) => {
+                    handelInputChange(e);
+                  }}
                 />
               </td>
             </tr>
             <tr>
               <td colSpan="2">
-                <button className="custom-btn w-full">Create Account</button>
+                <p>{statusMsg}</p>
+              </td>
+            </tr>
+            <tr>
+              <td colSpan="2">
+                <button
+                  className="custom-btn w-full"
+                  onClick={() => {
+                    createUser();
+                  }}
+                >
+                  Create Account
+                </button>
               </td>
             </tr>
             <tr>
