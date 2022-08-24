@@ -207,7 +207,7 @@ const Dashboard = () => {
               full-time, part-time, contract and internships.
             </p>{" "}
           </div>
-          <div className="w-[650px] h-[60px]  flex ">
+          <div className="w-[650px] h-[60px]   flex ">
             <input
               type="text"
               className="h-full w-full outline-none px-5"
@@ -243,7 +243,7 @@ const Dashboard = () => {
       </div>
       <div className="my-5 w-full bg-[#fff] custom-px ">
         <div className=" w-full h-[10%] flex items-center justify-center ">
-          <p className=" mb-5 text-[30px] font-[600]">
+          <p className=" mb-5 text-[30px] font-[600] ">
             All Popular Listed jobs{" "}
           </p>{" "}
         </div>
