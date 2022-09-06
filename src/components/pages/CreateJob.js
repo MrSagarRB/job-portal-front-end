@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 const CreateJob = () => {
   let [newJob, setNewJob] = useState();
-  let base = "http://localhost:3001/";
+  let base = "https://job-portal-backend-mern.vercel.app";
 
   let handelInputChange = (e) => {
     setNewJob({ ...newJob, [e.target.name]: e.target.value });
