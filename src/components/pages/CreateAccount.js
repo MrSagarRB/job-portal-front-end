@@ -5,7 +5,7 @@ import Axios from "axios";
 const CreateAccount = () => {
   let [user, setUser] = useState();
   let [statusMsg, setStatusMsg] = useState();
-  let base = "http://localhost:3001/";
+  let base = "https://job-portal-backend-mern.vercel.app";
 
   let handelInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
