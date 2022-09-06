@@ -10,7 +10,7 @@ const Login = () => {
   };
 
   let handelLoginUser = () => {
-    let base = "http://localhost:3001/";
+    let base = "https://job-portal-backend-mern.vercel.app";
     Axios.post(`${base}userLogin`, userInput).then((result) => {
       setStatusMsg(result.data);
       console.log(result);
