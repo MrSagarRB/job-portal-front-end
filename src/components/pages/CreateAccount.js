@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Axios from "axios";
 
 const CreateAccount = () => {
   let [user, setUser] = useState();
   let [statusMsg, setStatusMsg] = useState();
-  let base = "https://job-portal-backend-mern.vercel.app";
+  let base = "https://job-portal-backend-mern.vercel.app/";
+  const navigate = useNavigate();
 
   let handelInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -14,6 +15,8 @@ const CreateAccount = () => {
   let createUser = () => {
     Axios.post(`${base}createNewUser`, user).then((result) => {
       setStatusMsg(result.data);
+      alert("User Register Sucessfully");
+      navigate("/login");
     });
   };
 
@@ -22,7 +25,7 @@ const CreateAccount = () => {
   return (
     <div className="h-screen">
       <div className="h-[80px] bg-[#F4F5F7] w-full mt-[60px] text-[25px] font-[600] flex items-center justify-center ">
-        <p>Create a Job</p>
+        <p>Register User</p>
       </div>
       <div className="flex justify-center mt-[50px]">
         <div className="p-5 border  md:w-[35%] w-[90%]">

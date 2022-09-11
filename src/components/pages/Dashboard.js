@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ImportantDevicesIcon from "@mui/icons-material/ImportantDevices";
 import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -6,7 +6,8 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import Typewriter from "typewriter-effect";
 import KeyboardDoubleArrowDownIcon from "@mui/icons-material/KeyboardDoubleArrowDown";
-
+import { ContextProvider } from "../../Context";
+import { Link } from "react-router-dom";
 let categoryData = [
   {
     categoryName: "Technology",
@@ -50,142 +51,15 @@ let categoryData = [
   },
 ];
 
-let jobListData = [
-  {
-    companyName: "Mirats Insigts",
-    jobTitle: "Software Devloper-Font End",
-    experince: "3",
-    location: "Mumbai",
-    type: "Full Time",
-    ctc: "360,000",
-  },
-  {
-    companyName: "Mirats Insigts",
-    jobTitle: "Software Devloper-Font End",
-    experince: "3",
-    location: "Mumbai",
-    type: "Full Time",
-    ctc: "360,000",
-  },
-  {
-    companyName: "Mirats Insigts",
-    jobTitle: "Software Devloper-Font End",
-    experince: "3",
-    location: "Mumbai",
-    type: "Full Time",
-    ctc: "360,000",
-  },
-  {
-    companyName: "Mirats Insigts",
-    jobTitle: "Software Devloper-Font End",
-    experince: "3",
-    location: "Mumbai",
-    type: "Full Time",
-    ctc: "360,000",
-  },
-  {
-    companyName: "Mirats Insigts",
-    jobTitle: "Software Devloper-Font End",
-    experince: "3",
-    location: "Mumbai",
-    type: "Full Time",
-    ctc: "360,000",
-  },
-  {
-    companyName: "Mirats Insigts",
-    jobTitle: "Software Devloper-Font End",
-    experince: "3",
-    location: "Mumbai",
-    type: "Full Time",
-    ctc: "360,000",
-  },
-  {
-    companyName: "Mirats Insigts",
-    jobTitle: "Software Devloper-Font End",
-    experince: "3",
-    location: "Mumbai",
-    type: "Full Time",
-    ctc: "360,000",
-  },
-  {
-    companyName: "Mirats Insigts",
-    jobTitle: "Software Devloper-Font End",
-    experince: "3",
-    location: "Mumbai",
-    type: "Full Time",
-    ctc: "360,000",
-  },
-  {
-    companyName: "Mirats Insigts",
-    jobTitle: "Software Devloper-Font End",
-    experince: "3",
-    location: "Mumbai",
-    type: "Full Time",
-    ctc: "360,000",
-  },
-  {
-    companyName: "Mirats Insigts",
-    jobTitle: "Software Devloper-Font End",
-    experince: "3",
-    location: "Mumbai",
-    type: "Full Time",
-    ctc: "360,000",
-  },
-  {
-    companyName: "Mirats Insigts",
-    jobTitle: "Software Devloper-Font End",
-    experince: "3",
-    location: "Mumbai",
-    type: "Full Time",
-    ctc: "360,000",
-  },
-  {
-    companyName: "Mirats Insigts",
-    jobTitle: "Software Devloper-Font End",
-    experince: "3",
-    location: "Mumbai",
-    type: "Full Time",
-    ctc: "360,000",
-  },
-  {
-    companyName: "Mirats Insigts",
-    jobTitle: "Software Devloper-Font End",
-    experince: "3",
-    location: "Mumbai",
-    type: "Full Time",
-    ctc: "360,000",
-  },
-  {
-    companyName: "Mirats Insigts",
-    jobTitle: "Software Devloper-Font End",
-    experince: "3",
-    location: "Mumbai",
-    type: "Full Time",
-    ctc: "360,000",
-  },
-  {
-    companyName: "Mirats Insigts",
-    jobTitle: "Software Devloper-Font End",
-    experince: "3",
-    location: "Mumbai",
-    type: "Full Time",
-    ctc: "360,000",
-  },
-  {
-    companyName: "Mirats Insigts",
-    jobTitle: "Software Devloper-Font End",
-    experince: "3",
-    location: "Mumbai",
-    type: "Full Time",
-    ctc: "360,000",
-  },
-];
-
 const Dashboard = () => {
   let [size, setSize] = useState(4);
+  let { jobList, setJobList } = useContext(ContextProvider);
 
-  let filterJob = jobListData.slice(0, size);
+  console.log(jobList?.data);
 
+  let filterJob = jobList?.data.slice(0, size);
+
+  console.log(filterJob);
   return (
     <div className=" pb-10">
       <div className="banner-container custom-px pt-[200px] ">
@@ -261,32 +135,34 @@ const Dashboard = () => {
                   <div className=" flex flex-col justify-center">
                     <div>
                       <p className="text-[#5F5858] font-[400] text-[16px]">
-                        Fresher UI/UX D
+                        {item?.companyName}
                       </p>
                     </div>
                     <div>
                       <p className="text-[22px]">
-                        Fresher UI/UX Designer (3 Year Exp.)
+                        {item?.jobTitle} ({item?.experience})
                       </p>
                     </div>
                     <div className="flex gap-4 text-[15px] font-[400]">
                       <div className="flex">
                         <LocationOnIcon className="icon-green" />{" "}
-                        <p> Nairobi, Kenya</p>
+                        <p> {item?.location}</p>
                       </div>
                       <div className="flex">
                         <AccessTimeIcon className="icon-green" />{" "}
-                        <p> Full Time</p>
+                        <p> {item?.jobType}</p>
                       </div>
                       <div className="flex">
                         <CurrencyRupeeIcon className="icon-green" />{" "}
-                        <p> Ksh 150,000</p>
+                        <p> {item?.salaryRange}</p>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div>
-                  <button className="custom-btn ">View Details</button>
+                  <Link to={`/Job-Details/${item?._id}`}>
+                    <button className="custom-btn "> View Details</button>
+                  </Link>
                 </div>
               </div>
             );

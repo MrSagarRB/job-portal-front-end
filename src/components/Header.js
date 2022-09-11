@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { ContextProvider } from "../Context";
 
 const Header = () => {
+  let { loginSession, setLoginSession } = useContext(ContextProvider);
+
+  console.log(loginSession?.loggedInUser?.userName);
   return (
     <div className="h-full bg-[#fff] flex items-center  justify-between custom-px border shadow-sm">
       <div>
@@ -13,9 +17,17 @@ const Header = () => {
         </Link>
       </div>
       <div className="flex gap-5 items-center justify-between">
-        <Link to="/login">
-          <p className="text-[18px] text-[#338573] font-semibold">Login</p>
-        </Link>
+        <p className="text-[18px] text-[#338573] font-semibold">
+          {loginSession.loginStautus ? (
+            <Link to={`/job-list/${loginSession?.loggedInUser?.userName}`}>
+              {" "}
+              {loginSession?.loggedInUser?.userName}
+            </Link>
+          ) : (
+            <Link to={`/login`}>Login</Link>
+          )}
+        </p>
+
         <Link to="/create-job">
           <button className="custom-btn text-[18px] ">Post a job</button>
         </Link>

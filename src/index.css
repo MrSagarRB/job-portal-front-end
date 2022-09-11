@@ -61,6 +61,16 @@
 .loginTable td {
   padding: 10px;
 }
+.jobDetail-table {
+  width: 100%;
+}
+.jobDetail-table td {
+  padding: 10px;
+}
+.jobDetail-table td:first-child {
+  font-weight: 500;
+  font-size: 20px;
+}
 
 * {
   -ms-overflow-style: none; /* Internet Explorer 10+ */
