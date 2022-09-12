@@ -5,7 +5,6 @@ import { ContextProvider } from "../Context";
 const Header = () => {
   let { loginSession, setLoginSession } = useContext(ContextProvider);
 
-  console.log(loginSession?.loggedInUser?.userName);
   return (
     <div className="h-full bg-[#fff] flex items-center  justify-between custom-px border shadow-sm">
       <div>
