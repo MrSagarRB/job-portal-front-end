@@ -3,13 +3,11 @@ import { Link } from "react-router-dom";
 import Axios from "axios";
 import { ContextProvider } from "../../Context";
 import Dashboard from "./Dashboard";
-import Cookies from "universal-cookie";
 
 const Login = () => {
   let { loginSession, setLoginSession } = useContext(ContextProvider);
   let [userInput, setUserInput] = useState();
   let [statusMsg, setStatusMsg] = useState();
-  const cookies = new Cookies();
 
   let handelInputChange = (e) => {
     setUserInput({ ...userInput, [e.target.name]: e.target.value });
@@ -19,7 +17,6 @@ const Login = () => {
     let base = "https://job-portal-backend-mern.vercel.app/";
     Axios.post(`${base}userLogin`, userInput).then((result) => {
       setStatusMsg(result.data.msg);
-      cookies.set("token", result.data.jwtToken);
       if (result.data.msg === "User Login Success") {
         setLoginSession({
           ...loginSession,
@@ -31,7 +28,7 @@ const Login = () => {
       }
     });
   };
-
+  // console.log(loginSession?.loggedInUser?.userName);
   return (
     <>
       {loginSession?.loginStautus ? (
